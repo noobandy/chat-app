@@ -1,0 +1,26 @@
+{
+  "name": "chat-app",
+  "version": "0.0.0",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "moment": "~2.10.6",
+    "angular": "~1.4.7",
+    "angular-ui-router": "~0.2.15",
+    "jquery": "~2.1.4",
+    "bootstrap": "~3.3.5",
+    "angular-resource": "~1.4.7",
+    "angular-local-storage": "~0.2.3",
+    "angular-xeditable": "~0.1.9",
+    "angular-translate": "~2.8.1",
+    "angular-translate-loader-static-files": "~2.8.1",
+    "angular-loading-bar": "~0.8.0",
+    "font-awesome": "~4.4.0"
+  }
+}
