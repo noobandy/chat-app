@@ -15,6 +15,13 @@ angular.module("ChatApp").config(["$stateProvider", "$urlRouterProvider",
       data : {
         isSecure : false
       }
+    }).state('signup page', {
+      url: "/signup",
+      templateUrl: "/public/templates/signup.html",
+      controller : "SignUpController",
+      data : {
+        isSecure : false
+      }
     }).state('chat page', {
       url: "/chat",
       templateUrl: "/public/templates/chat.html",

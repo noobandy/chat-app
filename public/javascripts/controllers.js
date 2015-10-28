@@ -30,6 +30,30 @@ angular.module("ChatApp").controller("HomeController", ["$scope","User",
 		}
 	}]);
 
+angular.module("ChatApp").controller("SignUpController", ["$scope","User",
+	"$state", "AuthenticationManager",
+	function($scope, User, $state, AuthenticationManager) {
+
+		$scope.signUpModel = { username : "", usernameTaken : false};
+
+		$scope.userExists = function(username) {
+			User.get({username : username}, function() {
+				$scope.signUpModel.usernameTaken = true;
+			}, function(){
+				$scope.signUpModel.usernameTaken = false;
+			});
+		};
+
+		$scope.signUp = function(signUpModel) {
+			var user = new User();
+			user.username = signUpModel.username;
+			var user = user.$create({},function(result){
+				AuthenticationManager.authenticate($scope.signUpModel.username, function() {
+					$state.go("chat page");
+				});
+			});
+		};
+	}]);
 
 angular.module("ChatApp").controller("ChatController", ["$rootScope", "$scope",
 	function($rootScope, $scope) {

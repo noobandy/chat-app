@@ -1,0 +1,19 @@
+<div class="col-lg-6">
+	<h1>{{'app.name' | translate}}</h1>
+	<h2 class="subtitle">{{'home.signUpMessage' | translate}}</h2>
+
+	<form name="signUpForm" class="form-inline signup" novalidate>
+
+		<div class="form-group" data-ng-class="{'has-error' : (signUpForm.$submitted || signUpForm.username.$touched) && (signUpForm.username.$error.required || signUpModel.usernameTaken),
+		'has-success' : signUpForm.username.$touched && !(signUpForm.username.$error.required || signUpModel.usernameTaken)}">
+			<input data-ng-blur="userExists(signUpModel.username)" name="username" required="" data-ng-model="signUpModel.username" type="text" class="form-control"  placeholder="{{'home.username' | translate}}">
+			</input>
+			<span data-ng-show="signUpModel.usernameTaken" class="help-block">
+				{{'home.usernameTaken' | translate:signUpModel}}
+			</span>
+		</div>
+		<button data-ng-click="signUpForm.$valid && !signUpModel.usernameTaken && signUp(signUpModel)"type="submit" class="btn btn-primary">
+			{{'home.signUp' | translate}}
+		</button>
+	</form>
+</div>

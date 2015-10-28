@@ -82,7 +82,7 @@ ChatApp.run(["$rootScope", "AuthenticationManager","$state",
 					}
 				}
 
-				if(toState.name === "home page" && $rootScope.globals.isAuthenticated) {
+				if((toState.name === "home page" || toState.name === "signup page") && $rootScope.globals.isAuthenticated) {
 					event.preventDefault();
 					$state.go("chat page");
 				}

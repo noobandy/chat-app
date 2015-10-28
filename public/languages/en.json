@@ -9,5 +9,8 @@
 	"home.username" : "Username",
 	"home.userNotFound": "User {{username}} not found",
 	"home.userNotFoundHumour": "Go home you seem drunk!",
-	"home.signInMessage": "Sign in to access Chat app"
+	"home.signInMessage": "Sign in to access Chat app",
+	"home.signUpMessage" : "Sign up for Chat app account",
+	"home.signUp": "Sign up",
+	"home.usernameTaken" : "Username {{username}} is not available"
 }

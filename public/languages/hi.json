@@ -9,5 +9,8 @@
 	"home.username" : "उपयोगकर्ता नाम",
 	"home.userNotFound": "उपयोगकर्ता {{username}} नहीं मिला",
 	"home.userNotFoundHumour": "तुम नशे में लग रहे हैं घर जाओ!",
-	"home.signInMessage": "बातचीत एप्लिकेशन में साइन इन करें"
+	"home.signInMessage": "बातचीत एप्लिकेशन में साइन इन करें",
+	"home.signUpMessage" : "Sign up for Chat app account",
+	"home.signUp": "Sign up",
+	"home.usernameTaken" : "Username {{username}} is not available"
 }

@@ -5,17 +5,15 @@ angular.module("ChatApp").service("AuthenticationManager", [ "User",
 	function(User, localStorageService, $rootScope) {
 		return {
 			authenticate : function(username, success, error) {
-				var users = User.get({username : username}, function() {
-					if(users.length > 0) {
-						localStorageService.set("authenticatedUser", users[0]);
-						//only interested in $rootScope.$on()
-						$rootScope.$emit("$authSuccess", {authenticatedUser : users[0]});
-						success();
-					} else {
-						$rootScope.$emit("$authFailed");
-						error();
-					}
-				}); 
+				var user = User.get({username : username}, function(result) {
+					localStorageService.set("authenticatedUser", user);
+					//only interested in $rootScope.$on()
+					$rootScope.$emit("$authSuccess", {authenticatedUser : user});
+					success();
+				},function(rejection){
+					$rootScope.$emit("$authFailed");
+					error();
+				});
 			},
 			signOut : function() {
 				localStorageService.clearAll();
