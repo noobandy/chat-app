@@ -35,10 +35,10 @@ ChatApp.run(["$rootScope", "AuthenticationManager","$state",
 		//
 		$rootScope.globals = {
 			heartBeatConfig : {
-				url : "/heartbeat",
-				method: "GET",
-				params : {
-					user : null
+				url : "/api/heartbeat",
+				method: "POST",
+				data : {
+					username : null
 				},
 				interval: 60000
 			}
@@ -48,30 +48,30 @@ ChatApp.run(["$rootScope", "AuthenticationManager","$state",
 			$rootScope.globals.isAuthenticated = true;
 
 			$rootScope.globals.authenticatedUser = AuthenticationManager.authenticatedUser();
-			$rootScope.globals.heartBeatConfig.params.user =  AuthenticationManager.authenticatedUser().username;
+			$rootScope.globals.heartBeatConfig.data.username =  AuthenticationManager.authenticatedUser().username;
 		} else {
 			$rootScope.globals.isAuthenticated = false;
 
 			$rootScope.globals.authenticatedUser = null;
-			$rootScope.globals.heartBeatConfig.params.user =  null;
+			$rootScope.globals.heartBeatConfig.data.username =  null;
 		}
 
 		$rootScope.$on("$authSuccess", function(event, data) {
 			$rootScope.globals.isAuthenticated = true;
 
 			$rootScope.globals.authenticatedUser = data.authenticatedUser;
-			$rootScope.globals.heartBeatConfig.params.user =  AuthenticationManager.authenticatedUser().username;
+			$rootScope.globals.heartBeatConfig.data.username =  AuthenticationManager.authenticatedUser().username;
 		});
 
 		$rootScope.$on("$authCleared", function() {
 			$rootScope.globals.isAuthenticated = false;
 
 			$rootScope.globals.authenticatedUser = null;
-			$rootScope.globals.heartBeatConfig.params.user =  null;
+			$rootScope.globals.heartBeatConfig.data.user =  null;
 		});
 
 		$rootScope.$on("$stateChangeStart",
-			function(event, toState, toParams, fromState, fromParams) {
+			function(event, toState, todata, fromState, fromdata) {
 				
 				//$rootScope.globals.showLoader = true;
 

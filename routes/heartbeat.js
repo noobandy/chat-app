@@ -1,34 +1,25 @@
 var path = require("path");
 var express = require("express");
-var OnlineUser = require(path.join(__dirname, "../models/OnlineUser.js"));
-
+var User = require(path.join(__dirname, "../models/User.js"));
 var router = express.Router();
 
-router.get("", function(req, res, next) {
-	console.log("heartbeat received from "+req.query.user);
-	var username = req.query.user;
-	OnlineUser.find({username : username}, function(error, documents) {
-		if(error) {
-			next(error);
-		}
+router.post("/heartbeat", function(req, res, next) {
+	var username = req.body.username;
 
-		var onlineUser = null;
-		if(documents.length === 0) {
-			onlineUser = new OnlineUser({username : username, lastHeartBeatReceivedAt : new Date()});
+	User.findOne({username : username}, function(error, user) {
+		if(error) next(error);
+
+		if(user !== null) {
+			var now = new Date();
+			user.lastActiveTimeStamp = now.getTime();
+			user.save(function(error, user) {
+				res.send();
+			});
 		} else {
-			onlineUser = documents[0];
-			onlineUser.lastHeartBeatReceivedAt = new Date();
+			//not found
+			next("route");
 		}
-
-		onlineUser.save(function(error, onlineUser) {
-			if(error) {
-				next(error);
-			}
-			res.send();
-		});
-
 	});
-	
 });
 
 module.exports = router;

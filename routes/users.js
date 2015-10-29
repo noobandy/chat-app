@@ -3,7 +3,9 @@ var path = require("path");
 var User = require(path.join(__dirname, "../models/User.js"));
 
 var router = express.Router();
-
+function randomInt (low, high) {
+    return Math.floor(Math.random() * (high - low) + low);
+}
 //get all users
 router.get("/users", function(req, res, next) {
 	User.find({}, function(error, docs) {
@@ -33,7 +35,10 @@ router.get("/users/:username", function(req, res, next) {
 
 //create new user
 router.post("/users", function(req, res, next) {
-	var promise = User.create(req.body);
+	var data = req.body;
+	data.avatar = data.avatar ? data.avatar : "/public/images/avatars/"+randomInt(0,2)+".gif";
+	
+	var promise = User.create(data);
 	promise.then(function(newUser) {
 		res.json(newUser);
 	}, function(error) {

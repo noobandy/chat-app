@@ -47,7 +47,7 @@
             </div>
             <div class="panel-footer">
               <div class="input-group">
-                <input ng-model="chatWindow.newMessage" to-do-enter="postMessage(chatWindow)" data-ng-focus="chatWindow.minimized && toggleChatWindow(chatWindow)" type="text" class="form-control input-lg" placeholder="Write your message here..." />
+                <input ng-model="chatWindow.newMessage" data-chat-enter="postMessage(chatWindow)" data-ng-focus="chatWindow.minimized && toggleChatWindow(chatWindow)" type="text" class="form-control input-lg" placeholder="Write your message here..." />
               </div>
             </div>
         </div>
@@ -60,7 +60,7 @@
             <span class="sr-only">Toggle Dropdown</span>
         </button>
         <ul class="dropdown-menu" role="menu">
-            <li data-ng-repeat="user in onlineUsers">
+            <li data-ng-repeat="user in onlineUsers" data-ng-if="globals.authenticatedUser.username !== user.username">
               <a data-ng-click="newChat(user)" href="#" data-ng-bind="user.username">
               </a>
             </li>

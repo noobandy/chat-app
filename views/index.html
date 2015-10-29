@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-	<title>To Do</title>
+	<title>Chat</title>
   <!-- build:css css/chat-app.css -->
   <link rel="stylesheet" type="text/css" href="/public/stylesheets/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="/public/stylesheets/style.css">
@@ -35,7 +35,7 @@
 </head>
 <body data-ng-app="ChatApp">
   <data-ng-if="globals.isAuthenticated">
-    <data-to-do-heart-beat data-config="globals.heartBeatConfig">
+    <data-chat-heart-beat data-config="globals.heartBeatConfig">
   </data-ng-if>
 	<nav data-ng-controller="NavbarController" class="navbar navbar-default">
   <div class="container-fluid">
@@ -50,7 +50,7 @@
       	{{"app.name" | translate}}
       </a>
       <a data-ng-if="globals.isAuthenticated" class="navbar-brand" data-ui-sref="chat page">
-      	{{globals.authenticatedUser.username}}
+      	<img data-ng-src="{{globals.authenticatedUser.avatar}}">
       </a>
     </div>
 

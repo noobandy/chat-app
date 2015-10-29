@@ -7,7 +7,7 @@ angular.module("ChatApp").directive("chatEnter", function() {
 			element.keypress(function(event) {
 				//enter key
 				if(event.keyCode === 13) {
-					scope.$apply(attrs.toDoEnter);
+					scope.$apply(attrs.chatEnter);
 				}
 			});
 		}

@@ -56,13 +56,9 @@ angular.module("ChatApp").controller("SignUpController", ["$scope","User",
 	}]);
 
 angular.module("ChatApp").controller("ChatController", ["$rootScope", "$scope",
-	function($rootScope, $scope) {
-		$scope.onlineUsers = [{
-			username : "Bret"
-		},
-		{
-			username : "Anand Mohan"
-		}];
+	"User",
+	function($rootScope, $scope, User) {
+		$scope.onlineUsers = User.onlineUsers();
 
 
 		$scope.openChatWindows = [{

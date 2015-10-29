@@ -8,6 +8,11 @@ angular.module("ChatApp").factory("User", ["$resource", function($resource) {
 		},
 		update : {
 			method : "PUT"
+		},
+		onlineUsers : {
+			method: "GET",
+			url: "/api/onlineusers",
+			isArray : true
 		}
 	});
 }]);

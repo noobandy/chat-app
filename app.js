@@ -6,6 +6,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require("./routes/users.js");
+var heartbeat = require("./routes/heartbeat.js");
+var onlineusers = require("./routes/onlineusers.js");
 
 var app = express();
 
@@ -25,6 +27,11 @@ app.use("/bower_components", express.static(path.join(__dirname, 'bower_componen
 app.use('/', routes);
 
 app.use("/api", users);
+
+app.use("/api", heartbeat);
+
+app.use("/api", onlineusers);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

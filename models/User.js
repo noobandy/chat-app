@@ -7,6 +7,9 @@ var UserSchema = mongoose.Schema({
 	},
 	avatar : {
 		type : String
+	},
+	lastActiveTimeStamp : {
+		type : Number
 	}
 });
 
